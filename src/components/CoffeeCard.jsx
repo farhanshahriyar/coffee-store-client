@@ -12,6 +12,7 @@ const CoffeeCard = ({coffee}) => {
     
         const handleDelete = () => {
             // console.log(_id)
+
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -22,14 +23,32 @@ const CoffeeCard = ({coffee}) => {
                 confirmButtonText: 'Yes, delete it!'
               }).then((result) => {
                 if (result.isConfirmed) {
-                  Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                  )
-                  console.log("file has been deleted.")
+                //   Swal.fire(
+                //     'Deleted!',
+                //     'Your file has been deleted.',
+                //     'success'
+                //   console.log("file has been deleted.")
+                    fetch(`http://localhost:5000/coffee/${_id}`, {
+                        method: 'DELETE'
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if(data.deleteCount > 0 ) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your coffee has been deleted.',
+                                'success'
+                            )
+                            
+                        }
+                    })
                 }
+                 // reset the page 
+                window.location.reload()
               })
+
+             
         }
 
 
