@@ -12,7 +12,7 @@ const updateCoffee = () => {
    photo} = coffee
 
   
-  const handleUpdate  = (e) => {
+  const handleUpdateCoffee  = (e) => {
     e.preventDefault()
     // console.log('button clicked') testing purpose
 
@@ -27,7 +27,7 @@ const updateCoffee = () => {
     const photo = form.photo.value;
 
     // ki ki dorkar info neyar jonne
-    const newCoffee = {
+    const updatedCoffee = {
         name,
         quantity,
         supplier,
@@ -36,15 +36,15 @@ const updateCoffee = () => {
         details,
         photo
 } 
-console.log(newCoffee)
+console.log(updatedCoffee)
 
 // send the data to the server
-fetch('http://localhost:5000/coffee',{
-    method: 'POST',
+fetch(`http://localhost:5000/coffee/${_id}`,{
+    method: 'PUT',
     headers: {
         'content-type': 'application/json'
     },
-    body: JSON.stringify(newCoffee)
+    body: JSON.stringify(updatedCoffee)
 })
 .then(res => res.json())
 .then(data => {
@@ -53,7 +53,7 @@ fetch('http://localhost:5000/coffee',{
         // alert('Coffee added successfully')
         Swal.fire({
           title: 'Success!',
-          text: 'Coffee added successfully',
+          text: 'Coffee updated successfully',
           icon: 'success',
           confirmButtonText: 'Done'
         })
@@ -66,16 +66,15 @@ fetch('http://localhost:5000/coffee',{
           confirmButtonText: 'Back'
         })
     }
-})
-
-    }
+  })
+}
   return (
     <div> 
        <Link to='/' className="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-sky-600 rounded">Back</Link>
 
        <div className="bg-[#F4F3F0] p-24">
   <h1 className=" text-xl font-extrabold">Update Coffee</h1>
-  <form onSubmit={handleUpdate}  >
+  <form onSubmit={handleUpdateCoffee}  >
     {/* row 1 - name and quantity */}
     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
       <div className="sm:col-span-3">
