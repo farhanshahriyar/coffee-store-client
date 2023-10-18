@@ -1,15 +1,46 @@
 const addCoffee = () => {
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        // console.log('button clicked') testing purpose
+
+        // get all the values from the form
+        const form = e.target;
+        const name = form.name.value;
+        const quantity = form.quantity.value;
+        const supplier = form.supplier.value;
+        const taste = form.taste.value;
+        const category = form.category.value;
+        const details = form.details.value;
+        const photo = form.photo.value;
+
+        // ki ki dorkar info neyar jonne
+        const newCoffee = {
+            name,
+            quantity,
+            supplier,
+            taste,
+            category,
+            details,
+            photo
+    } 
+    console.log(newCoffee)
+    // clear the form
+    form.reset()
+    }
+
+    
 return (
 <div className="bg-[#F4F3F0] p-24">
   <h1 className=" text-xl font-extrabold">Add Coffee</h1>
-  <form>
+  <form onSubmit={handleSubmit} >
     {/* row 1 - name and quantity */}
     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
       <div className="sm:col-span-3">
         <label htmlFor="coffee-name" className="block text-sm font-medium leading-6 text-gray-900">Coffee Name</label>
         <div className="mt-2">
           <input type="text" name="name" id="first-name" autoComplete="given-name" placeholder="enter coffee name"
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required />
         </div>
       </div>
       <div className="sm:col-span-3">
@@ -17,7 +48,7 @@ return (
           Quantity</label>
         <div className="mt-2">
           <input type="text" name="quantity" id="first-name" autoComplete="given-name" placeholder="Quantity"
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" required />
         </div>
       </div>
     </div>
