@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 const CoffeeCard = ({coffee}) => {
@@ -79,13 +80,11 @@ const CoffeeCard = ({coffee}) => {
       </p>
     </div>
     <div className="p-6 pt-2 flex gap-2">
-      <button
-        className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+      <Link  to={`/updateCoffee/${_id}`} className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         type="button"
-        data-ripple-light="true"
-      >
+        data-ripple-light="true">
         Edit
-      </button>
+      </Link>
       <button onClick={() => (handleDelete(_id))}
         className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         type="button"
@@ -93,13 +92,13 @@ const CoffeeCard = ({coffee}) => {
       >
         Delete
       </button>
-      <button
+      <Link to={`/viewCoffee/${_id}`}
         className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         type="button"
         data-ripple-light="true"
       >
         View
-      </button>
+      </Link>
     </div>
   </div>
   )
