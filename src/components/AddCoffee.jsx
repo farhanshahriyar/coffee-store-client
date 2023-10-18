@@ -25,6 +25,33 @@ const addCoffee = () => {
             photo
     } 
     console.log(newCoffee)
+
+    // send the data to the server
+    // fetch('http://localhost:5000/coffee', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(newCoffee)
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+    //     console.log(data)
+    // })
+
+    fetch('http://localhost:5000/coffee',{
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(newCoffee)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+    })
+
+
     // clear the form
     form.reset()
     }
@@ -90,7 +117,14 @@ return (
         </div>
       </div>
       {/* row image */}
-      <div className="col-span-full">
+      <div className="sm:col-span-3">
+        <label htmlFor="coffee-name" className="block text-sm font-medium leading-6 text-gray-900">PhotoURL</label>
+        <div className="mt-2">
+          <input type="text" name="photo" id="first-name" autoComplete="given-name" placeholder="paste photo link"
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+        </div>
+      </div>
+      {/* <div className="col-span-full">
         <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">Upload photo</label>
         <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
           <div className="text-center">
@@ -110,7 +144,7 @@ return (
             <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
     <div className="mt-6 flex items-center justify-end gap-x-6">
       <button type="button" className="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
