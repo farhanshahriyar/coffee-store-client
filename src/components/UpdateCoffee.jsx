@@ -49,7 +49,7 @@ fetch(`http://localhost:5000/coffee/${_id}`,{
 .then(res => res.json())
 .then(data => {
     console.log(data)
-    if(data.insertedId){
+    if(data.modifiedCount > 0){
         // alert('Coffee added successfully')
         Swal.fire({
           title: 'Success!',
