@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 const addCoffee = () => {
 
     const handleSubmit = (e) => {
@@ -49,6 +51,23 @@ const addCoffee = () => {
     .then(res => res.json())
     .then(data => {
         console.log(data)
+        if(data.insertedId){
+            // alert('Coffee added successfully')
+            Swal.fire({
+              title: 'Success!',
+              text: 'Coffee added successfully',
+              icon: 'success',
+              confirmButtonText: 'Done'
+            })
+        } else {
+            // alert('Something went wrong')
+            Swal.fire({
+              title: 'Error!',
+              text: 'Do you want to continue',
+              icon: 'error',
+              confirmButtonText: 'Back'
+            })
+        }
     })
 
 
